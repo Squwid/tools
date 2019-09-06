@@ -6,3 +6,8 @@ import "fmt"
 func JSONLineWrap(key, value string) string {
 	return fmt.Sprintf(`{"%s": "%s"}`, key, value)
 }
+
+// WWrap wraps a line in json and returns a byte slice for quick web response
+func WWrap(key string, format string, a ...interface{}) []byte {
+	return []byte(JSONLineWrap(key, fmt.Sprintf(format, a...)))
+}
